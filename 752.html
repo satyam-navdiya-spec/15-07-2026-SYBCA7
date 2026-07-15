@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS // Ultimate Gaming Hub</title>
+    <style>
+        /* CSS Variables for easy color customization */
+        :root {
+            --bg-deep: #0b0c10;
+            --bg-card: #1f2833;
+            --accent-neon: #00f2fe; /* Electric Cyan */
+            --accent-purple: #4facfe; /* Deep Blue-Purple */
+            --text-main: #c5c6c7;
+            --text-bright: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: rgba(11, 12, 16, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 242, 254, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-bright);
+            text-decoration: none;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-neon);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+        }
+
+        .btn-join {
+            background: transparent;
+            border: 2px solid var(--accent-neon);
+            color: var(--accent-neon);
+            padding: 8px 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .btn-join:hover {
+            background: var(--gradient-primary);
+            color: var(--bg-deep);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+            border-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: calc(85vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle, rgba(31,40,51,0.4) 0%, rgba(11,12,16,1) 80%);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 5;
+        }
+
+        .hero-badge {
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid var(--accent-neon);
+            color: var(--accent-neon);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: var(--text-bright);
+            margin-bottom: 20px;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            color: #a3a8b4;
+            line-height: 1.6;
+        }
+
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--bg-deep);
+            border: none;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-bright);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-bright);
+        }
+
+        /* Content Section Styling */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-bright);
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--accent-neon);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        /* Games Grid Feature with Filter */
+        .game-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gradient-primary);
+            color: var(--bg-deep);
+            border-color: transparent;
+            font-weight: 600;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .game-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-neon);
+            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.15);
+        }
+
+        /* Mock images created with beautiful CSS patterns inside cards */
+        .game-image-placeholder {
+            height: 200px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: white;
+            position: relative;
+        }
+
+        .game-card:nth-child(1) .game-image-placeholder {
+            background: linear-gradient(45deg, #f857a6, #ff5858);
+        }
+        .game-card:nth-child(2) .game-image-placeholder {
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+        }
+        .game-card:nth-child(3) .game-image-placeholder {
+            background: linear-gradient(45deg, #fc4a1a, #f7b733);
+        }
+
+        .game-info {
+            padding: 20px;
+        }
+
+        .game-tag {
+            font-size: 0.75rem;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--accent-neon);
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .game-info h3 {
+            color: var(--text-bright);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .game-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .rating {
+            color: #ffd700;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #06070a;
+            padding: 40px 8%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.3);
+            margin-top: 15px;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+            }
+            nav {
+                display: none; /* Can be expanded later into a burger menu */
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .cta-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Professional Navigation -->
+    <header>
+        <a href="#" class="logo">NEXUS</a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#games">Tournaments</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#teams">Clans</a></li>
+            </ul>
+        </nav>
+        <button class="btn-join">Login / Sign Up</button>
+    </header>
+
+    <!-- Hero Showcase -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Next-Gen E-Sports Platform</span>
+            <h1>Unleash Your Inner <span>Gaming Legend</span></h1>
+            <p>Join competitive arenas, join professional squads, and climb the global leaderboards in the world's most immersive e-sports community.</p>
+            <div class="cta-group">
+                <button class="btn-primary" onclick="alert('Entering the Arena...')">Enter Arena</button>
+                <button class="btn-secondary" onclick="document.getElementById('games').scrollIntoView();">Browse Events</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Feature Filter Showcase -->
+    <section id="games">
+        <div class="section-header">
+            <p>Live Competitive Matchmaking</p>
+            <h2>Active Match Pools</h2>
+        </div>
+
+        <div class="game-filter">
+            <button class="filter-btn active" onclick="filterGames('all', this)">All Games</button>
+            <button class="filter-btn" onclick="filterGames('fps', this)">FPS</button>
+            <button class="filter-btn" onclick="filterGames('moba', this)">MOBA</button>
+        </div>
+
+        <div class="games-grid">
+            <!-- Game Card 1 -->
+            <div class="game-card" data-genre="fps">
+                <div class="game-image-placeholder">STRIKE: GO</div>
+                <div class="game-info">
+                    <span class="game-tag">FPS / TACTICAL</span>
+                    <h3>Strike: Global Offense</h3>
+                    <p>Current pool prize totals: $12,500 USD across active regionals.</p>
+                    <div class="game-meta">
+                        <span>Active Players: <strong>4.2k</strong></span>
+                        <span class="rating">★ 4.9</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Card 2 -->
+            <div class="game-card" data-genre="moba">
+                <div class="game-image-placeholder">REALM: NEXUS</div>
+                <div class="game-info">
+                    <span class="game-tag">MOBA / STRATEGY</span>
+                    <h3>Realm of the Nexus</h3>
+                    <p>Clash on the 3-lane tactical map. Seasonal ladder resets in 4 days.</p>
+                    <div class="game-meta">
+                        <span>Active Players: <strong>8.7k</strong></span>
+                        <span class="rating">★ 4.8</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Card 3 -->
+            <div class="game-card" data-genre="fps">
+                <div class="game-image-placeholder">APEX: ROYALE</div>
+                <div class="game-info">
+                    <span class="game-tag">FPS / SURVIVAL</span>
+                    <h3>Apex Survival Royale</h3>
+                    <p>Team up, drop into volatile maps, and fight to be the last squad standing.</p>
+                    <div class="game-meta">
+                        <span>Active Players: <strong>5.1k</strong></span>
+                        <span class="rating">★ 4.7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clean, Simple Footer -->
+    <footer>
+        <div class="logo" style="margin-bottom: 15px; display: inline-block;">NEXUS</div>
+        <p>&copy; 2026 NEXUS Esports Network. All rights reserved. Built for competitive play.</p>
+    </footer>
+
+    <!-- Interactive Filtering Script -->
+    <script>
+        function filterGames(genre, button) {
+            // Update Active Class on Buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Filter Game Cards
+            const cards = document.querySelectorAll('.game-card');
+            cards.forEach(card => {
+                if (genre === 'all' || card.getAttribute('data-genre') === genre) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
